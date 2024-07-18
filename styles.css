@@ -1,0 +1,353 @@
+/* Import fonts */
+
+@font-face {
+    font-family: "inter_regular";
+    src: url("fonts/inter_regular.ttf");
+}
+@font-face {
+    font-family: "inter_bold";
+    src: url("fonts/inter_bold.ttf");
+}
+@font-face {
+    font-family: "inter_extrabold";
+    src: url("fonts/inter_extrabold.ttf");
+}
+
+/* CSS Reset */
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Properties */
+
+body {
+    margin: 35px 100px;
+    background: #fefdf9;
+    font-family: "inter_regular", sans-serif;
+    font-size: 15px;
+    color: rgba(0, 0, 26, 0.7); /* "#00001a" color with an opacity set on "0.7" */
+}
+h1 {
+    font-family: "inter_extrabold", sans-serif;
+    color: #00001a;
+}
+h2, h3, h4 {
+    font-family: "inter_bold", sans-serif;
+}
+h2 {
+    color: #efac5d;
+}
+h3 {
+    color: #00001a;
+}
+h4 {
+    color: #f15d51;
+}
+p {
+    line-height: 25px;
+}
+a {
+    color: rgba(0, 0, 26, 0.7); /* Same color as set on "body" */
+    text-decoration: none;
+}
+
+/* Header (Logo + Nav => List & Menu) */
+
+header {
+    padding-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+header nav ul li {
+    margin: 0 20px;
+}
+header nav ul li:last-child {   /* Remove "margin-right" (20px => 0) only for the last element in the list */
+    margin-right: 0;
+}
+header nav ul li a, #menu nav ul li a {
+    transition: color 0.2s ease;
+}
+header nav ul li a:hover, #menu nav ul li a:hover {
+    color: #f15d51;
+}
+#menu_icon {
+    width: 55px;
+    display: none;
+    cursor: pointer;
+}
+#menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0, 0, 26, 0.5);
+    z-index: 2;
+    filter: opacity(0%);
+    transition: filter 0.2s ease;
+}
+#links {
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: #fefdf9;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+}
+#menu_cross {
+    height: 40px;
+    position: absolute;
+    right: 25px;
+    top: 35px;
+    cursor: pointer;
+}
+#links nav {
+    height: 80%;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+}
+#links nav ul {
+    display: flex;
+    flex-direction: column;
+}
+#links nav ul li {
+    margin: 13px 25px;
+}
+#links nav ul li a {
+    font-size: 18px;
+    color: #00001a;
+}
+
+/* Main (Introduction + News) */
+
+main {
+    display: flex;
+}
+#introduction {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#introduction img {
+    width: 100%;
+}
+#banner_small { /* Hide the small banner (for mobile) when the user is on desktop */
+    display: none;
+}
+#introduction #content {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+}
+#introduction #content h1, #introduction #content > div {
+    width: 50%;
+}
+#introduction #content h1 {
+    margin-right: 30px;
+    font-size: 55px;
+    line-height: 53px;
+}
+#read_more {
+    position: relative;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 185px;
+    height: 48px;
+    background: #f15d51;
+    overflow: hidden;
+}
+#read_more p {
+    font-family: "inter_extrabold";
+    color: #00001a;
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    user-select: none;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+#read_more::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00001a;
+    transform: translateY(-101%);   /* When "-100%" is set, the "before" element may not be completely hidden (some pixels may be visible) */
+    transition: transform 0.3s ease;
+}
+#read_more:hover::before {
+    transform: translateY(0%);
+}
+#read_more:hover p {
+    color: white;
+}
+#news {
+    margin-left: 35px;
+    padding: 0 25px;
+    width: 30%; /* 100% (Total) - 70% (Introduction) = 30% (News) */
+    background: #00001a;
+}
+#news h2 {
+    margin-top: 25px;
+    font-size: 40px;
+}
+#news article {
+    padding: 27px 0;
+}
+#news article a {
+    font-size: 20px;
+    color: white;
+    transition: color 0.2s ease;
+}
+#news article a:hover {
+    color: #efac5d;
+}
+#news article p {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.65);
+}
+.line {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Footer (3 articles) */
+
+footer {
+    padding-top: 75px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+footer article {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+footer article img {
+    height: 128px;
+}
+footer article div {
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+footer article div h4 {
+    font-size: 32px;
+}
+footer article div a {
+    font-family: "inter_extrabold";
+    font-size: 18px;
+    color: #00001a;
+    transition: color 0.2s ease;
+}
+footer article div a:hover {
+    color: #f15d51;
+}
+footer article div p {
+    width: 225px;
+}
+
+/* Media queries */
+
+@media screen and (1120px <= width < 1360px) {
+    #introduction {
+        max-height: 515px;  /* Limit the height of the element (basically, it no longer follows the same height as "news" element) */
+    }
+}
+@media screen and (width < 1120px) {
+    body {
+        margin: 35px 50px;
+    }
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    #introduction, #news {
+        width: 100%;
+    }
+    #introduction {
+        padding-bottom: 75px;
+    }
+    #news {
+        margin-left: 0;
+        padding: 0;
+    }
+    #news h2, #news article {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+@media screen and (width < 800px) {
+    body {
+        margin: 35px 25px;
+    }
+    header nav ul {
+        display: none;
+    }
+    #menu_icon {
+        display: block;
+    }
+    #banner {
+        display: none;
+    }
+    #banner_small {
+        display: block;
+    }
+    #introduction #content {
+        flex-direction: column;
+        align-items: normal;
+    }
+    #introduction #content h1, #introduction #content > div {
+        width: auto;
+    }
+    #introduction #content h1 {
+        line-height: 60px;
+    }
+    #introduction #content > div {
+        padding-top: 25px;
+    }
+    footer article div p {
+        text-wrap: balance;
+    }
+}
+@media screen and (width < 400px) {
+    footer {
+        justify-content: center;
+    }
+    footer article {
+        flex-direction: column;
+        align-items: center;
+    }
+    footer article img {
+        width: 100px;
+        height: auto;
+    }
+    footer article div {
+        margin-left: 0;
+        align-items: center;
+    }
+    footer article div h4 {
+        margin-top: 25px;
+    }
+    footer article div h3, footer article div p {
+        margin-top: 10px;
+    }
+    footer article div p {
+        text-align: center;
+    }
+}
